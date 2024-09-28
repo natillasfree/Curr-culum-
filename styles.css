@@ -1,0 +1,648 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.t-cen {
+    text-align: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.nav-item button {
+    margin: auto 10px;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 1px solid rgb(169, 57, 225);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: rgb(234, 159, 234);
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+  
+.nav-item button:hover {
+    background: rgb(139, 7, 162);
+    box-shadow: 0 0 30px 5px rgba(223, 127, 226, 0.815);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+  
+.nav-item button:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+}
+  
+.nav-item button::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #bf5fec;
+    color:white;
+    box-shadow: 0 0 50px 30px #eabef3;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+  
+@keyframes sh02 {
+    from {
+      opacity: 0;
+      left: 0%;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+      left: 100%;
+    }
+}
+  
+.nav-item button:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+}
+
+.wheel-and-hamster {
+    --dur: 1s;
+    position: relative;
+    width: 12em;
+    height: 12em;
+    font-size: 14px;
+  }
+  
+  .wheel,
+  .hamster,
+  .hamster div,
+  .spoke {
+    position: absolute;
+  }
+  
+  .wheel,
+  .spoke {
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .wheel {
+    background: radial-gradient(100% 100% at center,hsla(0,0%,60%,0) 47.8%,hsl(0,0%,60%) 48%);
+    z-index: 2;
+  }
+  
+  .hamster {
+    animation: hamster var(--dur) ease-in-out infinite;
+    top: 50%;
+    left: calc(50% - 3.5em);
+    width: 7em;
+    height: 3.75em;
+    transform: rotate(4deg) translate(-0.8em,1.85em);
+    transform-origin: 50% 0;
+    z-index: 1;
+  }
+  
+  .hamster__head {
+    animation: hamsterHead var(--dur) ease-in-out infinite;
+    background: hsl(30,90%,55%);
+    border-radius: 70% 30% 0 100% / 40% 25% 25% 60%;
+    box-shadow: 0 -0.25em 0 hsl(30,90%,80%) inset,
+          0.75em -1.55em 0 hsl(30,90%,90%) inset;
+    top: 0;
+    left: -2em;
+    width: 2.75em;
+    height: 2.5em;
+    transform-origin: 100% 50%;
+  }
+  
+  .hamster__ear {
+    animation: hamsterEar var(--dur) ease-in-out infinite;
+    background: hsl(0,90%,85%);
+    border-radius: 50%;
+    box-shadow: -0.25em 0 hsl(30,90%,55%) inset;
+    top: -0.25em;
+    right: -0.25em;
+    width: 0.75em;
+    height: 0.75em;
+    transform-origin: 50% 75%;
+  }
+  
+  .hamster__eye {
+    animation: hamsterEye var(--dur) linear infinite;
+    background-color: hsl(0,0%,0%);
+    border-radius: 50%;
+    top: 0.375em;
+    left: 1.25em;
+    width: 0.5em;
+    height: 0.5em;
+  }
+  
+  .hamster__nose {
+    background: hsl(0,90%,75%);
+    border-radius: 35% 65% 85% 15% / 70% 50% 50% 30%;
+    top: 0.75em;
+    left: 0;
+    width: 0.2em;
+    height: 0.25em;
+  }
+  
+  .hamster__body {
+    animation: hamsterBody var(--dur) ease-in-out infinite;
+    background: hsl(30,90%,90%);
+    border-radius: 50% 30% 50% 30% / 15% 60% 40% 40%;
+    box-shadow: 0.1em 0.75em 0 hsl(30,90%,55%) inset,
+          0.15em -0.5em 0 hsl(30,90%,80%) inset;
+    top: 0.25em;
+    left: 2em;
+    width: 4.5em;
+    height: 3em;
+    transform-origin: 17% 50%;
+    transform-style: preserve-3d;
+  }
+  
+  .hamster__limb--fr,
+  .hamster__limb--fl {
+    clip-path: polygon(0 0,100% 0,70% 80%,60% 100%,0% 100%,40% 80%);
+    top: 2em;
+    left: 0.5em;
+    width: 1em;
+    height: 1.5em;
+    transform-origin: 50% 0;
+  }
+  
+  .hamster__limb--fr {
+    animation: hamsterFRLimb var(--dur) linear infinite;
+    background: linear-gradient(hsl(30,90%,80%) 80%,hsl(0,90%,75%) 80%);
+    transform: rotate(15deg) translateZ(-1px);
+  }
+  
+  .hamster__limb--fl {
+    animation: hamsterFLLimb var(--dur) linear infinite;
+    background: linear-gradient(hsl(30,90%,90%) 80%,hsl(0,90%,85%) 80%);
+    transform: rotate(15deg);
+  }
+  
+  .hamster__limb--br,
+  .hamster__limb--bl {
+    border-radius: 0.75em 0.75em 0 0;
+    clip-path: polygon(0 0,100% 0,100% 30%,70% 90%,70% 100%,30% 100%,40% 90%,0% 30%);
+    top: 1em;
+    left: 2.8em;
+    width: 1.5em;
+    height: 2.5em;
+    transform-origin: 50% 30%;
+  }
+  
+  .hamster__limb--br {
+    animation: hamsterBRLimb var(--dur) linear infinite;
+    background: linear-gradient(hsl(30,90%,80%) 90%,hsl(0,90%,75%) 90%);
+    transform: rotate(-25deg) translateZ(-1px);
+  }
+  
+  .hamster__limb--bl {
+    animation: hamsterBLLimb var(--dur) linear infinite;
+    background: linear-gradient(hsl(30,90%,90%) 90%,hsl(0,90%,85%) 90%);
+    transform: rotate(-25deg);
+  }
+  
+  .hamster__tail {
+    animation: hamsterTail var(--dur) linear infinite;
+    background: hsl(0,90%,85%);
+    border-radius: 0.25em 50% 50% 0.25em;
+    box-shadow: 0 -0.2em 0 hsl(0,90%,75%) inset;
+    top: 1.5em;
+    right: -0.5em;
+    width: 1em;
+    height: 0.5em;
+    transform: rotate(30deg) translateZ(-1px);
+    transform-origin: 0.25em 0.25em;
+  }
+  
+  .spoke {
+    animation: spoke var(--dur) linear infinite;
+    background: radial-gradient(100% 100% at center,hsl(0,0%,60%) 4.8%,hsla(0,0%,60%,0) 5%),
+          linear-gradient(hsla(0,0%,55%,0) 46.9%,hsl(0,0%,65%) 47% 52.9%,hsla(0,0%,65%,0) 53%) 50% 50% / 99% 99% no-repeat;
+  }
+  
+  /* Animations */
+  @keyframes hamster {
+    from, to {
+      transform: rotate(4deg) translate(-0.8em,1.85em);
+    }
+  
+    50% {
+      transform: rotate(0) translate(-0.8em,1.85em);
+    }
+  }
+  
+  @keyframes hamsterHead {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(0);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(8deg);
+    }
+  }
+  
+  @keyframes hamsterEye {
+    from, 90%, to {
+      transform: scaleY(1);
+    }
+  
+    95% {
+      transform: scaleY(0);
+    }
+  }
+  
+  @keyframes hamsterEar {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(0);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(12deg);
+    }
+  }
+  
+  @keyframes hamsterBody {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(0);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(-2deg);
+    }
+  }
+  
+  @keyframes hamsterFRLimb {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(50deg) translateZ(-1px);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(-30deg) translateZ(-1px);
+    }
+  }
+  
+  @keyframes hamsterFLLimb {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(-30deg);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(50deg);
+    }
+  }
+  
+  @keyframes hamsterBRLimb {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(-60deg) translateZ(-1px);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(20deg) translateZ(-1px);
+    }
+  }
+  
+  @keyframes hamsterBLLimb {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(20deg);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(-60deg);
+    }
+  }
+  
+  @keyframes hamsterTail {
+    from, 25%, 50%, 75%, to {
+      transform: rotate(30deg) translateZ(-1px);
+    }
+  
+    12.5%, 37.5%, 62.5%, 87.5% {
+      transform: rotate(10deg) translateZ(-1px);
+    }
+  }
+  
+  @keyframes spoke {
+    from {
+      transform: rotate(0);
+    }
+  
+    to {
+      transform: rotate(-1turn);
+    }
+  }
+  
+.mar-top {
+    margin-top: 85px;
+}
+
+.mar-bot {
+    margin-bottom: 25px;
+}
+
+.active {
+    color: #95f0a4 !important;
+}
+
+.bg-image {
+    background: linear-gradient(90deg, rgb(224, 168, 233) 0%, rgb(209, 163, 230) 35%, rgb(186, 147, 223) 68%, rgb(190, 137, 233) 100%);
+    height: 350px;
+
+}
+
+.mask {
+    background: rgb(188, 159, 230);
+    font-family: 'Honk', system-ui;
+}
+
+.description {
+    margin-top: 30px;
+    margin-left: 350px;
+}
+
+.description .info {
+    margin-top: 60px;
+}
+
+.description h2{
+  text-align: center;
+}
+.description .info table {
+  margin-bottom: 60px; 
+}
+
+
+.card {
+  width: 190px;
+  height: 254px;
+  background: #deb2e47d;
+  position: relative;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-top: 80px;
+}
+
+.card img {
+  width: 90%;
+  height: 90%;
+  z-index: 1;
+  color: white;
+  font-size: 2em;
+  border-radius: 10px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+  height: 130%;
+  animation: rotBGimg 3s linear infinite;
+  transition: all 0.2s linear;
+}
+
+@keyframes rotBGimg {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  background: #e7acf0;
+
+  inset: 5px;
+  border-radius: 15px;
+}  
+.card:hover:before {
+  background-image: linear-gradient(180deg, rgb(81, 255, 0), rgb(217, 0, 217));
+  animation: rotBGimg 3.5s linear infinite;
+} */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.container.description .info h2{
+  font-family: 'Oswald', sans-serif;
+}
+
+.table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  border: 1px solid purple;
+  background-color: #e7c6ec;
+  overflow: hidden;
+}
+
+.table th, .table td {
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th {
+  vertical-align: middle;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+
+table {
+  border-radius: 10px;
+}
+
+.skill {
+    margin-bottom: 30px;
+}
+.container.skills h2{
+  font-family: 'Oswald', sans-serif;
+}
+
+.skill .progress,
+.progress-bar {
+    height: 20px;
+    border-radius: 10px;
+}
+.skill .progress-bar{
+  background-color:#79db89;
+}
+
+.portafolio {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.portafolio .row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.portafolio .col-md-4 {
+  max-width: 18rem;
+}
+
+.portafolio .card4 {
+  width: 100%;
+}
+
+.container3 {
+  margin: 0 auto;
+}
+
+.container.portafolio h2{
+  font-family: 'Oswald', sans-serif;
+}
+
+.card4 {
+  position: relative;
+  height: 300px;
+  background: #e5d9d9;
+  border-radius: 15px;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.face {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.face.back {
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.face.back b {
+  margin: 0;
+  padding: 0;
+}
+
+.face.back .desc {
+  color: black;
+}
+
+.face.front {
+  transition: 0.5s;
+}
+
+.face.front b {
+  margin: 0;
+  padding: 0;
+  font-size: 5.1em;
+  color: white;
+  transition: 0.5s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.card4:hover .face.front {
+  height: 60px;
+}
+
+.card4:hover .face.front b {
+  font-size: 2em;
+}
+
+.face.front {
+  background-color: #bd94dd;
+  border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+  
+    .description{
+        margin: 10px;
+    }
+
+    .description .info {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .description .img{
+        display: flex;
+        justify-content: center;
+        padding-left: 0px;
+    }
+
+    .description img{
+        width: 80vw;
+    }
+
+    .mar-top {
+        margin-top: 25px;
+    }
+
+    .skills {
+        padding: 0px 30px;
+    }
+
+    .portafolio .col-md{
+        padding: 0px 30px;
+    }
+
+    .portafolio .card2 {
+        margin-top: 15px;
+        width: 100%;
+    }
+}
+
